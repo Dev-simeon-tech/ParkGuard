@@ -1,0 +1,6 @@
+#!/bin/bash
+source ./scripts/_init
+
+# Start the api service locally in docker
+source ./scripts/utils/generate_composed_env_root_file
+docker compose --project-directory ./ -f docker-compose.local.yml up -d api --build

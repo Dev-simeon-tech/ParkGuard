@@ -1,0 +1,22 @@
+#!/bin/bash
+set -x
+set -e
+
+# Docker Compose's ${VAR} interpolation can only read a .env file at the
+# project root (next to docker-compose.local.yml) — it cannot read
+# subfolder .env files. This script composes that root .env by
+# concatenating each app's own .env, which stays the single source of
+# truth for that app. Never edit the generated root .env by hand.
+
+for file in ./apps/api/.env ./apps/web/.env; do
+  if [ ! -f "$file" ]; then
+    echo "Error: $file does not exist. Aborting." >&2
+    exit 1
+  fi
+done
+
+{
+  echo '## -- AUTO GENERATED FILE! Composed from apps/api/.env and apps/web/.env. Used by Docker Compose only! Do not edit manually. --'
+  cat ./apps/api/.env
+  cat ./apps/web/.env
+} > .env

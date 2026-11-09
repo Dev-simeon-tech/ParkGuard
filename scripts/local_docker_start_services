@@ -1,0 +1,7 @@
+#!/bin/bash
+source ./scripts/_init
+
+# Start all local infrastructure services (currently just db — add redis,
+# etc. to this list the day this repo actually needs them).
+source ./scripts/utils/generate_composed_env_root_file
+docker compose --project-directory ./ -f docker-compose.local.yml up -d db --build

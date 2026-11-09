@@ -1,0 +1,6 @@
+#!/bin/bash
+source ./scripts/_init
+
+# Start every service (db, api, web) locally in docker
+source ./scripts/utils/generate_composed_env_root_file
+docker compose --project-directory ./ -f docker-compose.local.yml up -d db api web --build

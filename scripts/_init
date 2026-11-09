@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# --- Setting the working directory and configuring shell to output everything ----
+set -x # output everything to terminal
+set -e # don't ignore errors in scripts and stop execution in this case
+cd "$(dirname "$0")/.." # commands where this script is imported should be run from the root folder

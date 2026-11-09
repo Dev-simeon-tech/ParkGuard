@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      # Postgres itself listens on $PGPORT (falls back to 5432 if unset) —
+      # pinning it to the same DB_PORT used for the host-side mapping
+      # below means host port, container-internal port, and the api's own
+      # DB_PORT (from apps/api/.env) are always identical. No override
+      # needed anywhere for this to stay consistent.
+      PGPORT: ${DB_PORT}
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - parkguard_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USERNAME}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - '${PORT}:${PORT}'
+    env_file:
+      - apps/api/.env
+    environment:
+      - DB_HOST=db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    ports:
+      - '${VITE_PORT}:${VITE_PORT}'
+    environment:
+      - PORT=${VITE_PORT}
+
+volumes:
+  parkguard_pg_data:

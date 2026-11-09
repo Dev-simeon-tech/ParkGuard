@@ -1,0 +1,41 @@
+{
+  "name": "parkguard",
+  "private": true,
+  "packageManager": "pnpm@10.16.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "local:api:start": "bash ./scripts/local_docker_start_api",
+    "local:web:start": "bash ./scripts/local_docker_start_web",
+    "local:services:start": "bash ./scripts/local_docker_start_services",
+    "local:all:start": "bash ./scripts/local_docker_start_all"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.1",
+    "@commitlint/config-conventional": "21.2.0",
+    "husky": "9.1.7",
+    "prettier": "^3.6.0",
+    "turbo": "^2.5.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "bcrypt",
+      "esbuild",
+      "msw",
+      "unrs-resolver"
+    ],
+    "overrides": {
+      "zod": "4.4.3"
+    }
+  }
+}

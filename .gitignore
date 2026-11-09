@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# turbo
+.turbo/
+
+# env
+.env*
+!.env.example
+
+# logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# test
+coverage/
+test-reports/
+
+# uploaded parking-session photos (local disk storage)
+apps/api/storage/
+
+# editor/os
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+.claude
+.gstack/
