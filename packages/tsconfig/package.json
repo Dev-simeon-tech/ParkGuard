@@ -1,0 +1,11 @@
+{
+  "name": "@parkguard/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "files": [
+    "base.json",
+    "vite.json",
+    "node.json"
+  ]
+}
