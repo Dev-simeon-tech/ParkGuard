@@ -1,0 +1,18 @@
+export const Routes = {
+  home: '/',
+  notFound: '*',
+  login: '/login',
+  register: '/register',
+  forgotPassword: '/forgot-password',
+  resetPassword: '/reset-password',
+  verifyEmail: '/verify-email',
+  acceptInvite: '/accept-invite',
+  dashboard: '/dashboard',
+  forbidden: '/forbidden',
+  employees: '/employees',
+  rates: '/rates',
+  branches: '/branches',
+  parkingLog: '/parking-log',
+  vehicles: '/vehicles',
+  revenue: '/revenue',
+} as const;
