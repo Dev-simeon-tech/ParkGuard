@@ -57,7 +57,12 @@ export function LoginForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <div className="flex items-center justify-between">
+                <FormLabel>Password</FormLabel>
+                <Link to={Routes.forgotPassword} className="text-sm text-secondary hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
               <div className="relative">
                 <FormControl>
                   <Input
@@ -82,24 +87,7 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        {/* <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex items-center justify-between">
-                <FormLabel>Password</FormLabel>
-                <Link to={Routes.forgotPassword} className="text-sm text-secondary hover:underline">
-                  Forgot password?
-                </Link>
-              </div>
-              <FormControl>
-                <Input type="password" autoComplete="current-password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
+
         <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
           {loginMutation.isPending ? 'Signing in…' : 'Sign in'}
         </Button>
