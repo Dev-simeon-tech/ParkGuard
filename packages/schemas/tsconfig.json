@@ -1,0 +1,4 @@
+{
+  "extends": "@parkguard/tsconfig/base.json",
+  "include": ["src"]
+}

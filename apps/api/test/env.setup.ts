@@ -1,0 +1,12 @@
+process.env.NODE_ENV = 'test';
+process.env.PORT = '9001';
+process.env.DB_HOST = 'localhost';
+process.env.DB_PORT = '5432';
+process.env.DB_USERNAME = 'parkguard';
+process.env.DB_PASSWORD = 'parkguard';
+process.env.DB_NAME = 'parkguard_test';
+process.env.JWT_SECRET = 'test-jwt-secret';
+process.env.JWT_EXPIRES_IN = '15m';
+process.env.CUSTOMER_PORTAL_URL = 'http://localhost:9000';
+process.env.RESEND_API_KEY = 're_test_placeholder';
+process.env.EMAIL_FROM = 'no-reply@parkguard.example.com';

@@ -1,0 +1,10 @@
+{
+  "extends": "@parkguard/tsconfig/vite.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client", "vitest/globals", "vite-plugin-svgr/client"]
+  },
+  "include": ["src"]
+}
