@@ -166,6 +166,9 @@
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   body {
     @apply font-body bg-background text-foreground;
   }
@@ -226,18 +229,6 @@
     @apply bg-secondary-container text-secondary;
   }
 
-  .feature-list div article {
-    @apply shadow-rounded p-4 rounded-2xl flex flex-col items-center gap-4 text-center text-secondary;
-  }
-  .feature-list article h3 {
-    @apply text-surface-text font-bold text-xl lg:text-2xl;
-  }
-  .feature-list article svg {
-    @apply lg:size-10;
-  }
-  .feature-list div article p {
-    @apply lg:text-xl;
-  }
   .workflow article {
     @apply flex flex-col items-center text-center gap-3;
   }

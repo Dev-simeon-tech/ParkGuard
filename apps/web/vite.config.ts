@@ -1,9 +1,12 @@
 /// <reference types="vitest/config" />
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 import svgr from 'vite-plugin-svgr';
+
+const configDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -12,12 +15,12 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss(), svgr()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': path.resolve(configDirectory, './src'),
       },
     },
     server: {
       host: true,
-      port: Number(env.VITE_PORT) || 9000,
+      port: Number(env.VITE_PORT) || 9280,
     },
     build: {
       outDir: 'build',

@@ -7,9 +7,11 @@ export function LoginPage() {
   return (
     <div className="space-y-6 bg-white p-8 rounded-lg shadow-md w-full max-w-sm mx-auto">
       <div className="flex justify-center items-center flex-col gap-2">
-        <Logo />
+        <Link to={Routes.home}>
+          <Logo />
+        </Link>
         <h1 className="text-xl font-semibold mt-6">Welcome Back</h1>
-        <p className="text-on-surface-variant text-sm">Login in to your organisation account</p>
+        <p className="text-on-surface-variant text-base">Login in to your organisation account</p>
       </div>
       <LoginForm />
       <p className="text-sm text-neutral-500 text-center">
