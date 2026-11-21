@@ -3,7 +3,7 @@ import { CenteredLayout } from '@/components/CenteredLayout';
 import { authPublicRoutes } from '@/modules/auth/routes';
 import { guestRoutes } from './auth';
 import { commonRoutes } from './common';
-// import { protectedRoutes } from './protected';
+import { protectedRoutes } from './protected';
 
 const wrappedPublicRoutes = authPublicRoutes.map((route) => ({
   ...route,
@@ -12,7 +12,7 @@ const wrappedPublicRoutes = authPublicRoutes.map((route) => ({
 
 export const router = createBrowserRouter([
   ...guestRoutes,
-  // ...protectedRoutes,
+  ...protectedRoutes,
   ...wrappedPublicRoutes,
   ...commonRoutes,
 ]);
