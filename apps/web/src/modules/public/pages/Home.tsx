@@ -336,10 +336,10 @@ const HomePage = () => {
                 id="features-heading"
                 className="text-4xl font-extrabold tracking-tight text-black text-balance sm:text-5xl lg:text-6xl"
               >
-                Power. Speed. Control.
+                Features
               </h2>
               <p className="mt-4 text-base tracking-wide text-muted-foreground text-balance md:text-lg">
-                Everything you need to run a clear, accountable parking operation.
+                Everything you need to run a modern parking operation, all in one place.
               </p>
             </AnimatedContainer>
 

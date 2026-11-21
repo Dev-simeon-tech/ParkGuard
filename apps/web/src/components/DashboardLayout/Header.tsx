@@ -1,4 +1,4 @@
-import { Menu, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { LogOut, Menu, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useLogout } from '@/modules/auth/api/logout';
@@ -91,7 +91,8 @@ export function Header({
               onClick={handleLogout}
               disabled={logoutMutation.isPending}
             >
-              {logoutMutation.isPending ? 'Signing out…' : 'Sign out'}
+              <LogOut strokeWidth={1.5} />
+              <span className="ml-2">{logoutMutation.isPending ? 'Signing out…' : 'Sign out'}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
