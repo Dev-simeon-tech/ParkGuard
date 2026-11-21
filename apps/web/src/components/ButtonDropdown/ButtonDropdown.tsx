@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react';
 import { ReactNode } from 'react';
 import { Button } from '@/components/Button';
 import {
@@ -12,6 +13,7 @@ export type ButtonDropdownItem = {
   label: string;
   onClick: () => void;
   destructive?: boolean;
+  icon?: LucideIcon;
 };
 
 export type ButtonDropdownProps = {
@@ -39,6 +41,7 @@ export function ButtonDropdown({
             onSelect={item.onClick}
             className={cn(item.destructive && 'text-red-600')}
           >
+            {item.icon && <item.icon className="mr-2 h-4 w-4" />}
             {item.label}
           </DropdownMenuItem>
         ))}

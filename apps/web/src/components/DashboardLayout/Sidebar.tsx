@@ -1,13 +1,6 @@
 import { PermissionSets } from '@parkguard/authorization';
 import type { PermissionKey } from '@parkguard/authorization';
-import {
-  LayoutDashboard,
-  IdCard,
-  Building2,
-  ClipboardClock,
-  CarFront,
-  Banknote,
-} from 'lucide-react';
+import { LayoutGrid, UserRound, Building2, ClipboardClock, CarFront, Banknote } from 'lucide-react';
 import { LucideProps } from 'lucide-react';
 import { RefAttributes, ForwardRefExoticComponent, FunctionComponent, SVGProps } from 'react';
 import { NavLink, Link } from 'react-router-dom';
@@ -27,11 +20,11 @@ type SidebarLink = {
 };
 
 const navLinks: SidebarLink[] = [
-  { label: 'Dashboard', path: Routes.dashboard, icon: LayoutDashboard },
+  { label: 'Dashboard', path: Routes.dashboard, icon: LayoutGrid },
   {
     label: 'Employees',
     path: Routes.employees,
-    icon: IdCard,
+    icon: UserRound,
     permission: PermissionSets.organization.MANAGE_MEMBERS,
   },
   {
@@ -66,13 +59,17 @@ export function Sidebar({ isOpen }: { isOpen: boolean }) {
 
   return (
     <aside
-      className={`h-full md:w-full overflow-hidden w-[70%] z-10 absolute left-0 md:static bg-primary-container px-4 pt-6 pb-3 transition-transform duration-300 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full pointer-events-none'
+      aria-label="Main navigation"
+      className={`fixed inset-y-0 left-0 z-30 flex w-[min(19rem,84vw)] flex-col bg-primary-container px-2.5 pb-5 pt-6 shadow-[0_24px_60px_-36px_rgba(55,42,25,.3)] transition-transform duration-300 lg:sticky lg:top-0 lg:z-20 lg:h-screen lg:w-full lg:translate-x-0 lg:shadow-none ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
-      <Link to={Routes.home}>
-        <Logo className="mb-10" />
+      <Link to={Routes.home} aria-label="ParkGuard home" className="mb-10 px-2">
+        <Logo className="h-8 w-auto" />
       </Link>
+      <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+        Workspace
+      </p>
       <div className="flex flex-col gap-1">
         {links.map((link) => {
           const Icon = link.icon;
@@ -82,17 +79,23 @@ export function Sidebar({ isOpen }: { isOpen: boolean }) {
               to={link.path}
               className={({ isActive }: NavLinkRenderProps) =>
                 cn(
-                  'flex items-center gap-2 rounded-md p-3  font-bold text-sm text-on-primary-container hover:text-white',
+                  'group flex items-center gap-3 font-heading tracking-wide rounded-full px-3.5 py-3 text-[13px] font-medium text-white transition-colors hover:bg-secondary-variant/20 ',
                   isActive &&
-                    'bg-secondary  text-white hover:bg-secondary-container hover:text-on-secondary-container',
+                    'bg-secondary font-semibold text-white [&_svg]:fill-white [&_svg]:text-transparent hover:[&_svg]:text-secondary  hover:bg-[#e6f4f1] hover:text-secondary',
                 )
               }
             >
-              <Icon />
+              <Icon size={18} strokeWidth={1.8} className="shrink-0" />
               <span>{link.label}</span>
             </NavLink>
           );
         })}
+      </div>
+      <div className="mt-auto rounded-2xl shadow-xl text-white bg-secondary p-4">
+        <p className="text-xs font-semibold text-white">Need a hand?</p>
+        <p className="mt-1 text-xs leading-5 text-white">
+          Your team can help with your parking operations.
+        </p>
       </div>
     </aside>
   );

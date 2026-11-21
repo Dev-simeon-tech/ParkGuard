@@ -1,8 +1,9 @@
-import { PanelLeft } from 'lucide-react';
+import { Menu, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useLogout } from '@/modules/auth/api/logout';
 import { clearSession } from '@/modules/auth/utils';
+import { formatRoleName, roleBadgeVariants } from '@/modules/employees/utils';
 import { Badge } from '../Badge';
 import {
   DropdownMenu,
@@ -13,7 +14,13 @@ import {
 } from '../DropdownMenu';
 import { Avatar, AvatarFallback } from '../ui/avatar';
 
-export function Header({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boolean>> }) {
+export function Header({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const auth = useAuth();
   const logoutMutation = useLogout();
 
@@ -26,23 +33,45 @@ export function Header({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boole
   };
 
   return (
-    <header className="flex items-center justify-between border-b border-neutral-200 px-3 py-3">
-      <div className="flex items-center gap-5">
-        <div className="pr-3 border-r">
-          <PanelLeft onClick={() => setIsOpen((prev) => !prev)} className="cursor-pointer" />
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b px-4  sm:px-7">
+      <div className="flex min-w-0 items-center gap-3">
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="grid size-10 shrink-0 place-items-center rounded-xl text-[#716d64] transition hover:bg-[#f5efe3] hover:text-[#211f1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hidden"
+          aria-label="Toggle navigation"
+        >
+          <Menu size={20} />
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="hidden size-10 shrink-0 place-items-center rounded-xl text-[#716d64] transition hover:bg-secondary-variant/20 hover:text-[#211f1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:grid"
+          aria-label="Toggle sidebar"
+        >
+          {isOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+        </button>
+        <div className="hidden h-7 border-l border-[#e9e1d6] sm:block" />
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-[#292721]">
+            {auth.organization?.name || 'ParkGuard'}
+          </p>
+          <p className="hidden text-xs text-[#938b7e] sm:block">Parking operations</p>
         </div>
-        <span className="text-sm font-medium">{auth.organization?.name}</span>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <span className="hidden text-xs font-medium text-[#837c70] lg:block">
+          {auth.user?.firstName ? `Welcome, ${auth.user.firstName}` : ''}
+        </span>
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar className="cursor-pointer">
-              <AvatarFallback className="text-xl text-secondary">
-                {auth.user?.firstName.charAt(0)}
+          <DropdownMenuTrigger className="rounded-full  ">
+            <Avatar className="size-8 cursor-pointer border-none">
+              <AvatarFallback className="absolute inset-0 grid place-items-center border-none bg-secondary text-2xl text-white">
+                {auth.user?.firstName?.charAt(0)}
               </AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent collisionPadding={20} className="ml-20">
             <DropdownMenuItem className="text-sm capitalize">
               {auth.user?.firstName} {auth.user?.lastName}
             </DropdownMenuItem>
@@ -50,9 +79,11 @@ export function Header({ setIsOpen }: { setIsOpen: Dispatch<SetStateAction<boole
               {auth.user?.email}
             </DropdownMenuItem>
             <DropdownMenuItem className="text-sm text-secondary capitalize">
-              <Badge variant={`${auth.user?.role === 'admin' ? 'success' : 'default'}`}>
-                {auth.user?.role}
-              </Badge>
+              {auth.user?.role && (
+                <Badge className={`${roleBadgeVariants[auth.user?.role]} text-white`}>
+                  {formatRoleName(auth.user.role)}
+                </Badge>
+              )}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
