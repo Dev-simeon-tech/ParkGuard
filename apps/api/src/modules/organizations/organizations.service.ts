@@ -11,6 +11,7 @@ import {
   EmployeeBranchEntity,
   OrganizationEntity,
   OrganizationUserEntity,
+  ParkingSessionEntity,
   RoleEntity,
   TokenType,
   UserEntity,
@@ -269,7 +270,27 @@ export class OrganizationsService {
       throw new BadRequestException(OrganizationMessages.CANNOT_REMOVE_SELF);
     }
 
-    await membership.remove();
+    await AppDataSource.transaction(async (manager) => {
+      await manager.remove(membership);
+
+      const parkingSession = await manager.findOne(ParkingSessionEntity, {
+        where: [
+          { entryRecordedBy: { id: membership.user.id } },
+          { exitRecordedBy: { id: membership.user.id } },
+        ],
+        select: { id: true },
+      });
+      if (parkingSession) {
+        return;
+      }
+
+      const otherMembershipCount = await manager.count(OrganizationUserEntity, {
+        where: { user: { id: membership.user.id } },
+      });
+      if (otherMembershipCount === 0) {
+        await manager.remove(membership.user);
+      }
+    });
   }
 
   private async findMembership(

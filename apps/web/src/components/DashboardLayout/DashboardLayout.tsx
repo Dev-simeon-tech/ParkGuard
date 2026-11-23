@@ -31,7 +31,7 @@ export function DashboardLayout() {
 
   return (
     <div
-      className={`min-h-screen bg-primary-container transition-all lg:grid ${
+      className={`h-screen bg-primary-container transition-all lg:grid ${
         isSidebarOpen ? 'lg:grid-cols-[16rem_minmax(0,1fr)]' : 'lg:grid-cols-[0_minmax(0,1fr)]'
       }`}
     >
@@ -39,7 +39,7 @@ export function DashboardLayout() {
         <Sidebar isOpen={isSidebarOpen} />
       </div>
       <div
-        className={`min-w-0 transition-all  overflow-hidden bg-white ${isSidebarOpen ? 'lg:rounded-3xl m-3' : 'lg:rounded-none'}`}
+        className={`min-w-0 transition-all  overflow-x-hidden bg-white ${isSidebarOpen ? 'lg:rounded-3xl m-3' : 'lg:rounded-none'}`}
       >
         <Header isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
         <main className="relative min-h-[calc(100vh-88px)] px-4 py-7 sm:px-7 lg:px-10 lg:py-9">

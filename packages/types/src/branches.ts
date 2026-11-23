@@ -6,6 +6,8 @@ export type BranchSummary = {
   totalCapacity: number;
   status: 'active' | 'disabled';
   disabledAt: string | null;
+  totalMembers: number;
+  totalActiveSessions: number;
   rate: {
     durationMinutes: number;
     pricePerDuration: number;

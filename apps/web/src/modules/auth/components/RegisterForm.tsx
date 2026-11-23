@@ -47,7 +47,7 @@ export function RegisterForm() {
                 <FormLabel>First name</FormLabel>
                 <FormControl>
                   <Input
-                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                     autoComplete="given-name"
                     placeholder="Jane"
                     {...field}
@@ -65,7 +65,7 @@ export function RegisterForm() {
                 <FormLabel>Last name</FormLabel>
                 <FormControl>
                   <Input
-                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                     autoComplete="family-name"
                     placeholder="Doe"
                     {...field}
@@ -84,7 +84,7 @@ export function RegisterForm() {
               <FormLabel>Organisation / Business name</FormLabel>
               <FormControl>
                 <Input
-                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                   autoComplete="organization"
                   placeholder="Your parking business"
                   {...field}
@@ -102,7 +102,7 @@ export function RegisterForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input
-                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                   type="email"
                   autoComplete="email"
                   placeholder="janedon@example.com"
@@ -121,7 +121,7 @@ export function RegisterForm() {
               <FormLabel>Phone number</FormLabel>
               <FormControl>
                 <Input
-                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                   type="tel"
                   autoComplete="tel"
                   placeholder="+234 800 000 0000"
@@ -141,7 +141,7 @@ export function RegisterForm() {
               <div className="relative">
                 <FormControl>
                   <Input
-                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 pr-12 focus-visible:ring-secondary"
+                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 pr-12 "
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     placeholder="Create a password"
@@ -153,7 +153,7 @@ export function RegisterForm() {
                   onClick={() => setShowPassword((visible) => !visible)}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                   aria-pressed={showPassword}
-                  className="absolute right-2 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-lg text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+                  className="absolute right-2 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-lg text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 "
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
