@@ -1,5 +1,6 @@
 import type { OrganizationMember } from '@parkguard/types';
 import type { ColumnDef, OnChangeFn, PaginationState, SortingState } from '@tanstack/react-table';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { EllipsisVertical, SquarePen, Trash, Ban, UserRoundCheck, Activity } from 'lucide-react';
 import { useMemo } from 'react';
 import { Badge } from '@/components/Badge';
@@ -47,6 +48,20 @@ export function EmployeesTable({
         id: 'email',
         header: 'Email',
         accessorFn: (employee) => employee.user.email,
+      },
+      {
+        id: 'phone',
+        header: 'Phone',
+        accessorFn: (employee) => {
+          if (!employee.user.phoneNumber) {
+            return '-';
+          }
+
+          const phoneNumber = parsePhoneNumberFromString(employee.user.phoneNumber, 'NG');
+          return phoneNumber?.isValid()
+            ? phoneNumber.formatInternational()
+            : employee.user.phoneNumber;
+        },
       },
       {
         id: 'role',

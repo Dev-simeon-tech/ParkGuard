@@ -2,6 +2,7 @@ import type { InviteMemberBody } from '@parkguard/schemas';
 import type { BranchSummary } from '@parkguard/types';
 import { UserPlus } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { Button } from '@/components/Button';
 import {
   Dialog,
@@ -11,9 +12,9 @@ import {
   DialogTrigger,
 } from '@/components/Dialog';
 
-import { EmployeeForm } from './EmployeeForm';
 import { useInviteMember } from '../api/inviteMember';
 import { useListRoles } from '../api/listRoles';
+import { EmployeeForm } from './EmployeeForm';
 
 export function AddEmployeeDialog({ branches }: { branches: BranchSummary[] }) {
   const [open, setOpen] = useState(false);
@@ -30,8 +31,8 @@ export function AddEmployeeDialog({ branches }: { branches: BranchSummary[] }) {
       branchIds: values.branchIds!,
     });
     setOpen(false);
+    toast.success(`Invite link sent successfully to ${values.email}`);
   };
-
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>

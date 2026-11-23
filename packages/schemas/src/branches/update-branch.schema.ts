@@ -11,7 +11,16 @@ export const UpdateBranchBodySchema = z.object({
     .int(ValidationMessages.TOTAL_CAPACITY_INVALID)
     .positive(ValidationMessages.TOTAL_CAPACITY_INVALID)
     .optional(),
-  rate: RateFieldsSchema.partial().optional(),
+  rate: RateFieldsSchema.partial()
+    .extend({
+      dailyMaxAmount: z
+        .number()
+        .int(ValidationMessages.DAILY_MAX_AMOUNT_INVALID)
+        .positive(ValidationMessages.DAILY_MAX_AMOUNT_INVALID)
+        .nullable()
+        .optional(),
+    })
+    .optional(),
 });
 
 export type UpdateBranchBody = z.infer<typeof UpdateBranchBodySchema>;

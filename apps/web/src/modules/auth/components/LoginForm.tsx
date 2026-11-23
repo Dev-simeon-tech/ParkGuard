@@ -42,7 +42,7 @@ export function LoginForm() {
               <FormControl>
                 <Input
                   type="email"
-                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 focus-visible:ring-secondary"
+                  className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5"
                   placeholder="janedoe@example.com"
                   autoComplete="email"
                   {...field}
@@ -66,7 +66,7 @@ export function LoginForm() {
               <div className="relative">
                 <FormControl>
                   <Input
-                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 placeholder:text-4xl pr-12 focus-visible:ring-secondary"
+                    className="h-11 rounded-xl border-outline-variant/80 bg-surface/40 px-3.5 placeholder:text-4xl pr-12"
                     type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     placeholder="........."

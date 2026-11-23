@@ -3,6 +3,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { DashboardLayout } from '@/components/DashboardLayout';
 import { Routes } from '@/config/routes';
 import { useAuth } from '@/hooks/useAuth';
+import { branchesRoutes } from '@/modules/branches/routes';
 import { dashboardRoutes } from '@/modules/dashboard/routes';
 import { employeesRoutes } from '@/modules/employees/routes';
 
@@ -24,7 +25,7 @@ export const protectedRoutes: RouteObject[] = [
     children: [
       {
         element: <DashboardLayout />,
-        children: [...dashboardRoutes, ...employeesRoutes],
+        children: [...dashboardRoutes, ...employeesRoutes, ...branchesRoutes],
       },
     ],
   },

@@ -34,6 +34,7 @@
     "clsx": "^2.1.1",
     "cn": "^0.3.0",
     "date-fns": "^4.4.0",
+    "libphonenumber-js": "^1.13.17",
     "lucide-react": "^1.24.0",
     "motion": "^14.14.0",
     "radix-ui": "^1.6.7",

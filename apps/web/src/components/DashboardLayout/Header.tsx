@@ -33,7 +33,7 @@ export function Header({
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b px-4  sm:px-7">
+    <header className="sticky top-0 z-10 flex bg-white/40 backdrop-blur-2xl h-16 items-center justify-between border-b px-4  sm:px-7">
       <div className="flex min-w-0 items-center gap-3">
         <button
           type="button"
