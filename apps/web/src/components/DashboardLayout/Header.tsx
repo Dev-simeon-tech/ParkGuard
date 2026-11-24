@@ -53,14 +53,14 @@ export function Header({
         </button>
         <div className="hidden h-7 border-l border-[#e9e1d6] sm:block" />
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-[#292721]">
+          <p className="truncate text-sm font-semibold text-primary-container">
             {auth.organization?.name || 'ParkGuard'}
           </p>
-          <p className="hidden text-xs text-[#938b7e] sm:block">Parking operations</p>
+          <p className="hidden text-xs sm:block">Parking operations</p>
         </div>
       </div>
       <div className="flex items-center gap-2 sm:gap-3">
-        <span className="hidden text-xs font-medium text-[#837c70] lg:block">
+        <span className="hidden text-xs font-medium lg:block">
           {auth.user?.firstName ? `Welcome, ${auth.user.firstName}` : ''}
         </span>
         <DropdownMenu>
@@ -71,7 +71,7 @@ export function Header({
               </AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
-          <DropdownMenuContent collisionPadding={20} className="ml-20">
+          <DropdownMenuContent collisionPadding={27}>
             <DropdownMenuItem className="text-sm capitalize">
               {auth.user?.firstName} {auth.user?.lastName}
             </DropdownMenuItem>
