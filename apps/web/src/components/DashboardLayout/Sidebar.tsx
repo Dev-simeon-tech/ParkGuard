@@ -1,6 +1,13 @@
 import { PermissionSets } from '@parkguard/authorization';
 import type { PermissionKey } from '@parkguard/authorization';
-import { LayoutGrid, UserRound, Building2, ClipboardClock, CarFront, Banknote } from 'lucide-react';
+import {
+  LayoutGrid,
+  UserRound,
+  Building2,
+  CarFront,
+  ChartColumnIncreasing,
+  ClipboardList,
+} from 'lucide-react';
 import { LucideProps } from 'lucide-react';
 import { RefAttributes, ForwardRefExoticComponent, FunctionComponent, SVGProps } from 'react';
 import { NavLink, Link } from 'react-router-dom';
@@ -36,7 +43,7 @@ const navLinks: SidebarLink[] = [
   {
     label: 'Parking Log',
     path: Routes.parkingLog,
-    icon: ClipboardClock,
+    icon: ClipboardList,
     permission: PermissionSets.sessions.VIEW,
   },
   {
@@ -48,7 +55,7 @@ const navLinks: SidebarLink[] = [
   {
     label: 'Revenue',
     path: Routes.revenue,
-    icon: Banknote,
+    icon: ChartColumnIncreasing,
     permission: PermissionSets.revenue.MANAGE,
   },
 ];
@@ -81,11 +88,11 @@ export function Sidebar({ isOpen }: { isOpen: boolean }) {
                 cn(
                   'group flex items-center gap-3 font-heading tracking-wide rounded-full px-3.5 py-3 text-[13px] font-medium text-white transition-colors hover:bg-secondary-variant/20 ',
                   isActive &&
-                    'bg-secondary font-semibold text-white [&_svg]:fill-white [&_svg]:text-transparent hover:[&_svg]:text-secondary  hover:bg-[#e6f4f1] hover:text-secondary',
+                    'bg-secondary font-semibold text-white hover:bg-white hover:text-secondary ',
                 )
               }
             >
-              <Icon size={18} strokeWidth={1.8} className="shrink-0" />
+              <Icon width={18} height={18} className="size-4.5 shrink-0" />
               <span>{link.label}</span>
             </NavLink>
           );

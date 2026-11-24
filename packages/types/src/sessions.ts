@@ -54,6 +54,13 @@ export type SessionRevenueAnalytics = {
   totalExpectedRevenue: number;
   activeBranches: number;
   activeAttendants: number;
+  previousWeekTotalExpectedRevenue: number;
+  previousWeek: {
+    totalExpectedRevenue: number;
+    activeBranches: number;
+    activeAttendants: number;
+  };
+  weeklyTrend: Array<{ date: string; revenue: number }>;
 };
 
 export type AttendantSessionAnalytics = {

@@ -6,6 +6,9 @@ import { useAuth } from '@/hooks/useAuth';
 import { branchesRoutes } from '@/modules/branches/routes';
 import { dashboardRoutes } from '@/modules/dashboard/routes';
 import { employeesRoutes } from '@/modules/employees/routes';
+import { parkingLogRoutes } from '@/modules/parkingLog/routes';
+import { revenueRoutes } from '@/modules/revenue/routes';
+import { vehicleRoutes } from '@/modules/vehicles/routes';
 
 export function ProtectedRoute() {
   const auth = useAuth();
@@ -25,7 +28,14 @@ export const protectedRoutes: RouteObject[] = [
     children: [
       {
         element: <DashboardLayout />,
-        children: [...dashboardRoutes, ...employeesRoutes, ...branchesRoutes],
+        children: [
+          ...dashboardRoutes,
+          ...employeesRoutes,
+          ...branchesRoutes,
+          ...vehicleRoutes,
+          ...parkingLogRoutes,
+          ...revenueRoutes,
+        ],
       },
     ],
   },
