@@ -9,7 +9,6 @@ import {
   LayoutDashboard,
   Smartphone,
   Slash,
-  ScanText,
   Wallet,
   Building2,
   CircleDollarSign,

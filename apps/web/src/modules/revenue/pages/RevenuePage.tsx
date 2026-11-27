@@ -5,11 +5,7 @@ import { InfoCard } from '@/components/InfoCard';
 import { Spinner } from '@/components/Spinner';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import {
-  BarCompare,
-  ChartCard,
-  KpiCard,
-} from '@/components/ui/revenue-charts-kpi';
+import { BarCompare, ChartCard, KpiCard } from '@/components/ui/revenue-charts-kpi';
 import { formatNaira } from '@/utils/formatCurrency';
 import { useRevenueAnalytics } from '../api/getRevenueAnalytics';
 
@@ -50,8 +46,7 @@ export function RevenuePage() {
       : revenueData.totalExpectedRevenue > 0
         ? 1
         : 0;
-  const previousBranches =
-    revenueData.previousWeek?.activeBranches ?? revenueData.activeBranches;
+  const previousBranches = revenueData.previousWeek?.activeBranches ?? revenueData.activeBranches;
   const previousAttendants =
     revenueData.previousWeek?.activeAttendants ?? revenueData.activeAttendants;
   const branchesDelta =
@@ -140,7 +135,7 @@ export function RevenuePage() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-3 lg:grid-cols-2">
+        <div className="grid gap-3 lg:grid-cols-1">
           <ChartCard
             title="Expected revenue by branch"
             subtitle="Revenue recorded for the selected date"
@@ -159,10 +154,7 @@ export function RevenuePage() {
               ))}
             </div>
           </ChartCard>
-          <ChartCard
-            title="Revenue comparison"
-            subtitle="Expected revenue by branch"
-          >
+          <ChartCard title="Revenue comparison" subtitle="Expected revenue by branch">
             <BarCompare
               data={branchChartData}
               xKey="branch"

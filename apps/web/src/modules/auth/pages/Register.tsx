@@ -1,4 +1,4 @@
-import { ArrowLeft, BadgeCheck, Building2, ScanLine, Wallet } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, Building2, Camera, Wallet } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LogoDark from '@/assets/logo-dark.svg?react';
 import LogoLight from '@/assets/logo-light.svg?react';
@@ -6,7 +6,7 @@ import { Routes } from '@/config/routes';
 import { RegisterForm } from '../components/RegisterForm';
 
 const benefits = [
-  { icon: ScanLine, label: 'Record every vehicle entry and exit' },
+  { icon: Camera, label: 'Record every vehicle entry and exit' },
   { icon: Wallet, label: 'Calculate parking charges automatically' },
   { icon: Building2, label: 'Manage branches from one place' },
 ];
@@ -82,7 +82,7 @@ export function RegisterPage() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-xs font-medium text-white/60">YOUR OPERATIONS, CONNECTED</p>
-              <p className="mt-1 font-semibold text-white">From first scan to final report</p>
+              <p className="mt-1 font-semibold text-white">From first capture to final report</p>
             </div>
             <div className="flex -space-x-1.5" aria-hidden="true">
               {[0, 1, 2, 3].map((item) => (
@@ -95,7 +95,7 @@ export function RegisterPage() {
             </div>
           </div>
           <div className="mt-5 grid grid-cols-3 gap-2" aria-hidden="true">
-            {['Scan', 'Calculate', 'Review'].map((step, index) => (
+            {['Capture', 'Calculate', 'Review'].map((step, index) => (
               <div className="flex items-center gap-2" key={step}>
                 <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-secondary/25 text-[10px] font-bold text-secondary-fixed">
                   {index + 1}

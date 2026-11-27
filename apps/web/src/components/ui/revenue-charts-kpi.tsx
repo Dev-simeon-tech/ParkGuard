@@ -103,18 +103,27 @@ export function BarCompare<T extends Record<string, unknown>>({
               axisLine={false}
               tick={{ fill: 'var(--muted-foreground)', fontSize: 11 }}
               tickFormatter={format}
-              width={48}
+              width={80}
             />
             <Tooltip
+              contentStyle={{
+                background: '#131b2e',
+                border: '1px solid var(--border)',
+                boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.25)',
+                borderRadius: 8,
+                padding: 8,
+              }}
+              itemStyle={{ color: '#0d9488', fontSize: 16 }}
+              labelStyle={{ color: 'white', fontSize: 13 }}
               cursor={{ fill: 'var(--accent)', opacity: 0.6 }}
               formatter={(value) => format(Number(value))}
             />
-            {series.map((item, index) => (
+            {series.map((item) => (
               <Bar
                 key={item.key}
                 dataKey={item.key}
                 name={item.label}
-                fill={seriesColor(item, index)}
+                fill="#006a61"
                 maxBarSize={24}
                 radius={[4, 4, 0, 0]}
                 isAnimationActive={false}

@@ -5,7 +5,7 @@ import {
   CircleCheck,
   CircleDollarSign,
   Menu,
-  ScanText,
+  Camera,
   Shield,
   Wallet,
 } from 'lucide-react';
@@ -87,7 +87,7 @@ export function ParkingDashboardIllustration() {
           <div className="rounded-xl border border-slate-100 bg-slate-50/70 p-3">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-[10px] font-medium sm:text-[11px]">Entries today</span>
-              <ScanText size={15} className="text-secondary" />
+              <Camera size={15} className="text-secondary" />
             </div>
             <p className="mt-2 text-sm font-bold tracking-tight text-primary-container sm:text-base">
               126

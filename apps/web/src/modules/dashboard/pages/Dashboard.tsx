@@ -212,8 +212,8 @@ export function DashboardPage() {
         <article className="relative flex min-h-65 flex-col overflow-hidden rounded-2xl bg-primary-container p-6 text-[#fffaf0] shadow-[0_12px_30px_-20px_rgba(31,28,20,.55)] sm:p-7">
           <div className="pointer-events-none absolute -right-14 -top-16 size-56 rounded-full border border-white/8" />
           <div className="pointer-events-none absolute -right-2 -top-8 size-36 rounded-full border border-white/8" />
-          <div className="relative flex items-center gap-2 text-xs font-medium text-secondary">
-            <span className="size-1.5 rounded-full bg-secondary" />
+          <div className="relative flex items-center gap-2 text-xs font-medium text-secondary-variant">
+            <span className="size-1.5 rounded-full bg-secondary-variant" />
             At a glance
           </div>
           <div className="relative mt-9">
@@ -224,7 +224,9 @@ export function DashboardPage() {
           </div>
           <div className="relative mt-auto flex items-end justify-between gap-4 border-t border-white/10 pt-5">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.13em] text-secondary">Selected day</p>
+              <p className="text-[11px] uppercase tracking-[0.13em] text-secondary-variant">
+                Selected day
+              </p>
               <p className="mt-1 text-sm font-medium text-[#f5ede0]">{displayDate}</p>
             </div>
             <div className="grid size-11 place-items-center rounded-xl bg-secondary text-white">
